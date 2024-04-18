@@ -2,6 +2,10 @@ package com.spring.posts.resources.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class URL {
 
@@ -11,5 +15,15 @@ public class URL {
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
-	}	
+	}
+	
+	public static Date convertDate(String date, Date defaultValue) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		try {
+			return simpleDateFormat.parse(date);
+		} catch (ParseException e) {
+			return defaultValue;
+		}
+	}
 }
