@@ -16,6 +16,11 @@ public class PostService {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	public List<Post> findAll() {
+		return postRepository.findAll();
+	}
+	
 
 	public Optional<Post> findById(String id) {
 		Optional<Post> user = postRepository.findById(id);
